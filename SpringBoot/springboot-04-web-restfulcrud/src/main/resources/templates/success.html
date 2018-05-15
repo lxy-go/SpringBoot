@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>success</title>
+</head>
+<body>
+<h1>success</h1>
+    <!--th:text 将div里面的文本内容设置为-->
+    <div id="testid" class="testcalss" th:id="${Lion}" th:class="${Lion}" th:text="${Lion}">
+    前端数据
+    </div>
+    <hr/>
+    text:<div th:text="${hello}"></div>
+    utext:<div th:utext="${hello}"></div>
+    <hr/>
+    <!--th:each每次遍历都会生成当前这个标签 3个h4-->
+    theach:
+    <h4 th:text="${user}" th:each="user:${users}"></h4>
+    <hr/>
+    <!--th:each每次遍历都会生成当前这个标签 h4下3个span-->
+    <h4>
+        <span  th:each="user1:${users}"></span>
+    </h4>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "version": "v1",
+  "title": "Spring IDE",
+  "timestamp": 1525245425127,
+  "ttl": 10080,
+  "helpUrl": "https://aer.ctrlflow.com/spring-ide/help",
+  "feedbackUrl": "https://www.codetrails.com/error-analytics/",
+  "aboutUrl": "https://www.codetrails.com/error-analytics/",
+  "submitUrl": "https://aer.ctrlflow.com/spring-ide/community/new",
+  "maxReportSize": 524288,
+  "problemsUrl": "https://aer.ctrlflow.com/downloads/spring-ide/problems.zip",
+  "problemsTtl": 20160,
+  "interestUrl": "https://aer.ctrlflow.com/spring-ide/community/interest",
+  "connectTimeout": 5,
+  "socketTimeout": 10,
+  "acceptedProducts": [
+    "*"
+  ],
+  "acceptedPlugins": [
+    "*"
+  ],
+  "acceptedPackages": [
+    "ch.qos.*",
+    "com.sun.*",
+    "java.*",
+    "javafx.*",
+    "javax.*",
+    "org.apache.*",
+    "org.eclipse.*",
+    "org.osgi.*",
+    "org.slf4j.*",
+    "org.springframework.*",
+    "sun.*"
+  ],
+  "requiredPackages": [
+    "org.springframework.*"
+  ],
+  "acceptOtherPackages": true,
+  "acceptUiFreezes": true,
+  "ignoredStatuses": [
+    ":java.net.*:"
+  ],
+  "problemsZipLastDownloadTimestamp": 0
+}

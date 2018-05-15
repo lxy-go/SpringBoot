@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://getbootstrap.com/docs/4.1/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico" />
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Dashboard_files/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="./Dashboard_files/dashboard.css"  th:href="@{/css/dashboard.css}" rel="stylesheet" />
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+
+<body th:inline="text">
+<!--引入抽取的topbar-->
+<!--模板名会使用thymeleaf的规则-->
+<div th:replace="commons/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!--引入侧边栏-->
+        <div th:replace="commons/bar::sidebar(activeUri='emps')"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+
+            <h2><a  href="#" th:href="@{/emp}" class="btn btn-success">添加按钮</a></h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>lastName</th>
+                        <th>email</th>
+                        <th>gender</th>
+                        <th>department</th>
+                        <th>birth</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="emp:${emps}">
+                            <td th:text="${emp.id}">1</td>
+                            <td th:text="${emp.lastName}">1</td>
+                            <td th:text="${emp.email}">1</td>
+                            <td th:text="${emp.gender}">1</td>
+                            <td th:text="${emp.department.departmentName}">1</td>
+                            <td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}">1</td>
+                            <td>
+                                <a  href="#" th:href="@{/emp/}+${emp.id}" class="btn btn-sm btn-primary">编辑</a>
+                                <button th:attr="del_uri=@{/emp/}+${emp.id}"  class="btn btn-sm btn-danger deleteBtn">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <form id="deleteEmpForm" method="post">
+            <input type="hidden" name="_method" value="delete">
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./Dashboard_files/jquery-3.3.1.slim.min.js" th:src="@{/js/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="./Dashboard_files/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+<script src="./Dashboard_files/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+<!-- Icons -->
+<script src="./Dashboard_files/feather.min.js" th:src="@{/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+<script>
+    $(".deleteBtn").click(function () {
+        $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+
+    })
+</script>
+
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://getbootstrap.com/docs/4.1/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico" />
+
+    <title>员工添加</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Dashboard_files/bootstrap.min.css"  th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="./Dashboard_files/dashboard.css"  th:href="@{/css/dashboard.css}" rel="stylesheet" />
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+
+<body >
+<!--引入抽取的topbar-->
+<!--模板名会使用thymeleaf的规则-->
+<div th:replace="commons/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!--引入侧边栏-->
+        <div th:replace="commons/bar::sidebar(activeUri='emps')"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+            <form th:action="@{/emp}" method="post">
+                <!--发送put请求-->
+                <!--1.SpringMVC配置HiddenHttpMethodFilter
+                    2.页面创建一个post表单
+                    3.创建一个 input name_method 值就是我们请求的方式-->
+                <input type="hidden" name="_method" value="put" th:if="${emp!=null}">
+
+                <input type="hidden" name="id" th:value="${emp.id}" th:if="${emp!=null}">
+                <!-- LastName -->
+                <div class="form-group">
+                    <label for="LastName">LastName</label>
+                    <input type="text" class="form-control" id="LastName" name="lastName" placeholder="LastName" th:value="${emp!=null}?${emp.lastName}">
+                </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email"  name="email" placeholder="zhangsan@163.com" th:value="${emp!=null}?${emp.email}">
+                </div>
+                <!--gender-->
+                <div class="form-group">
+                    <label >Gender</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${emp!=null}?${emp.gender}==1">
+                        <label class="form-check-label" >男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${emp!=null}?${emp.gender}==0">
+                        <label class="form-check-label" >女</label>
+                    </div>
+                </div>
+                <!-- department -->
+                <div class="form-group">
+                    <label >department</label>
+                    <select class="form-control"  name="department.id" >
+                        <option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.departmentName}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Birth</label>
+                    <input type="text" class="form-control" id="birthDate" placeholder="2012-12-12" name="birth" th:value="${emp!=null}?${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${emp!=null}?'修改':'添加'">添 加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./Dashboard_files/jquery-3.3.1.slim.min.js" th:src="@{/js/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="./Dashboard_files/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+<script src="./Dashboard_files/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+<!-- Icons -->
+<script src="./Dashboard_files/feather.min.js" th:src="@{/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+
+</body></html>

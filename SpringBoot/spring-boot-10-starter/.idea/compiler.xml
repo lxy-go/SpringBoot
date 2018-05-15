@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lxy-spring-boot-starter" />
+        <module name="lxy-spring-boot-starter-autoconfigurer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lxy-spring-boot-starter" target="1.8" />
+      <module name="lxy-spring-boot-starter-autoconfigurer" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

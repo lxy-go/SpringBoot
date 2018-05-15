@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.179.131/jpa
+    username: root
+    password: Welcome_1
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+    #更新或创建
+      ddl-auto: update
+    show-sql: true

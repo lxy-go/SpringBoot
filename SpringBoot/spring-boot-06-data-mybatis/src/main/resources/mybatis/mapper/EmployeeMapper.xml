@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdjr.springboot.mapper.EmployeeMapper">
+    <select id="getEmpById" resultType="com.wdjr.springboot.bean.Employee">
+      select * from employee where id=#{id}
+   </select>
+
+    <insert id="insetEmp">
+        INSERT  INTO employee(last_name,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
+    </insert>
+</mapper>
+
+<!--public Employee getEmpById();-->
+
+<!--public void insetEmp(Employee employee);-->

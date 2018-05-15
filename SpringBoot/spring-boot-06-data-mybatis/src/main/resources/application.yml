@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    username: root
+    password: Welcome_1
+    url: jdbc:mysql://192.168.179.131:3306/mybatis01
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # 配置监控统计拦截的filters,去掉监控界面sql无法统计，‘wall’用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    userGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+server:
+  port: 9999
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true

@@ -1,0 +1,101 @@
+a:hover {
+    text-decoration: none;
+    color: #de1616;
+}
+
+img {
+    display: block;
+    max-width:100%;
+}
+
+.side-bar .list-group-item,
+img,
+.side-bar-card {
+    border-radius: 3px;
+}
+
+.navbar-brand {
+    background-image: url("../image/4.png");
+    width:70px;
+    background-size:80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.side-bar .list-group-item {
+    border:0;
+    margin-bottom: 5px;
+}
+.side-bar .list-group-item.active {
+    background: #de1616;
+}
+
+.news-list-item {
+    padding:15px;
+    border-bottom:1px solid#ccc;
+}
+.news-list-item:first-child {
+    padding-top:0 ;
+}
+
+.news-list-item .title {
+    font-size:18px;
+    margin-bottom: 5px;
+}
+
+.news-list-item .info {
+    color: #888;
+}
+
+.avartar,
+.avartar img {
+    display: inline-block;
+}
+
+.avartar img {
+    width:15px;
+    height:15px;
+    margin-right:5px;
+}
+zz
+.side-bar-card {
+    background: rgba(0,0,0,.05);
+    margin-top: 10px;
+}
+
+.side-bar-card .person-info {
+    padding:30px 0;
+    font-size:13px;
+}
+
+.news-list-item .title,
+.side-bar-card .person-info {
+    display: block;
+    color: #444;
+    line-height: 1.5;
+    font-weight:bold;
+}
+
+.side-bar-card .card-title,
+.side-bar-card .card-body .list .item {
+    padding:10px 15px;
+}
+
+.side-bar-card .card-title {
+    font-size:18px;
+    font-weight: bold;
+    padding-bottom:0;
+}
+
+.side-bar-card .card-body .list .item:hover {
+    background: rgba(0,0,0,.05);
+}
+
+.side-bar-card .card-body .list .item .title {
+    padding-bottom: 5px;
+}
+
+.side-bar-card .card-body .list .item .desc {
+    font-size: 10px;
+    color: #999;
+}

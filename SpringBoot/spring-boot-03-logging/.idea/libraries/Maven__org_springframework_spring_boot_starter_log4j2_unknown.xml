@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-boot-starter-log4j2:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-boot-starter-log4j2/unknown/spring-boot-starter-log4j2-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-boot-starter-log4j2/unknown/spring-boot-starter-log4j2-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-boot-starter-log4j2/unknown/spring-boot-starter-log4j2-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
