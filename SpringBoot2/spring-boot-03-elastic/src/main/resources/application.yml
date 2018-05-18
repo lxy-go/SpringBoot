@@ -1,0 +1,11 @@
+spring:
+  elasticsearch:
+    jest:
+      uris: http://192.168.179.131:9200
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.179.131:9301
+server:
+  port: 9000
+
