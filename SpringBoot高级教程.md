@@ -801,13 +801,378 @@ public void testSearch(){
 
 ## 六、SpringBoot的分布式
 
-1、Dubbo
+### 1、Dubbo简介
 
-2、Zookeeper
+**1. Dubbo是什么？**
+
+dubbo就是个服务框架，如果没有分布式的需求，其实是不需要用的，只有在分布式的时候，才有dubbo这样的分布式服务框架的需求，并且本质上是个服务调用的东东，**说白了就是个远程服务调用的分布式框架（告别Web Service模式中的WSdl，以服务者与消费者的方式在dubbo上注册）** 
+
+**2. Dubbo能做什么？**
+
+1.透明化的远程方法调用，就像调用本地方法一样调用远程方法，只需简单配置，没有任何API侵入。       
+
+2.软负载均衡及容错机制，可在内网替代F5等硬件负载均衡器，降低成本，减少单点。 
+
+3.服务自动注册与发现，不再需要写死服务提供方地址，注册中心基于接口名查询服务提供者的IP地址，并且能够平滑添加或删除服务提供者。 
+
+**3、docker的原理**
+
+![03.dubbo](E:\工作文档\SpringBoot\images2\03.dubbo.jpg)
+
+
+
+#### 调用关系说明：
+
+0. 服务容器负责启动，加载，运行服务提供者。
+
+1. 服务提供者在启动时，向注册中心注册自己提供的服务。
+
+2. 服务消费者在启动时，向注册中心订阅自己所需的服务。
+
+3. 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。
+
+4. 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。
+
+5. 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。
+
+### 2、Zookeeper
 
 安装Zookeeper
 
+```shell
+#安装zookeeper镜像
+docker pull registry.docker-cn.com/library/zookeeper
+#运行zookeeper
+ docker run --name zk01  --restart always -d -p 2111:2181 bf5cbc9d5cac
+```
 
+
+
+### 3、Dubbo、Zookeeper整合
+
+目的：完成**服务消费者**从注册中心查询调用**服务生产者**
+
+1、将服务提供者注册到注册中心
+
+1）、引入dubbo和zkclient的相关依赖
+
+```xml
+<dependency>
+    <groupId>com.alibaba.boot</groupId>
+    <artifactId>dubbo-spring-boot-starter</artifactId>
+    <version>0.1.0</version>
+</dependency>
+
+<dependency>
+    <groupId>com.github.sgroschupf</groupId>
+    <artifactId>zkclient</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
+2）、配置service服务，新建service.TicketService  和service.TicketServiceImp
+
+```java
+public interface TicketService {
+    public String getTicket();
+}
+```
+
+```java
+import com.alibaba.dubbo.config.annotation.Service;
+@Component
+//是dubbo包下的service
+@Service
+public class TicketServiceImp implements TicketService {
+    @Override
+    public String getTicket() {
+        return "《厉害了，我的国》";
+    }
+}
+```
+
+3）、配置文件application.yml
+
+```yml
+dubbo:
+  application:
+    name: provider-ticket
+  registry:
+    address: zookeeper://192.168.179.131:2111
+  scan:
+    base-packages: com.wdjr.ticket.service
+server:
+  port: 9001
+```
+
+4）、启动服务提供者
+
+**2、启动服务消费者**
+
+1）、引入Dubbo和Zookeeper的依赖
+
+```xml
+<dependency>
+    <groupId>com.alibaba.boot</groupId>
+    <artifactId>dubbo-spring-boot-starter</artifactId>
+    <version>0.1.0</version>
+</dependency>
+
+<dependency>
+    <groupId>com.github.sgroschupf</groupId>
+    <artifactId>zkclient</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
+2）、新建一个service.userService,并将TicketService的接口调用过来【全类名相同-包相同】
+
+![03.dubbo2](E:\工作文档\SpringBoot\images2\03.dubbo2.jpg)
+
+```java
+package com.wdjr.user.service;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.wdjr.ticket.service.TicketService;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Reference
+    TicketService ticketService;
+
+    public void hello(){
+        String ticket = ticketService.getTicket();
+        System.out.println("您已经成功买票："+ticket);
+    }
+}
+```
+
+3）、配置文件application.yml
+
+```yaml
+dubbo:
+  application:
+    name: comsumer-user
+  registry:
+    address: zookeeper://192.168.179.131:2111
+```
+
+4）、编写测试类测试
+
+```java
+@Autowired
+UserService userService;
+@Test
+public void contextLoads() {
+    userService.hello();
+}
+```
+
+
+
+结果展示：
+
+![04.dubbo+zk3](E:\工作文档\SpringBoot\images2\04.dubbo+zk3.jpg)
+
+
+
+### 4、SpringCloud
+
+SpringCloud是一个分布式的整体解决方案，Spring Cloud为开发者提供了在分布式系统（配置管理，服务器发现，熔断，路由，微代理，控制总线，一次性token,全局锁，leader选举，分布式session，集群状态）中快速构建的工具，使用SpringCloud的开发者可以快速的驱动服务或者构建应用，同时能够和云平台资源进行对接。
+
+
+
+**SpringCloud分布式开发的五大常用组件**
+
+>  Eureka:找到
+
+- 服务器发现 ——Netflix Eureka 
+- 客服端负载均衡——Netflix Ribbon
+- 断路器——Netflix Hystrix 发现不了就及时断开
+- 服务网关——Netflix Zuul  过滤请求
+- 分布式配置——SpringCloud Config
+
+目的：
+
+多个A服务调用多个B服务，负载均衡
+
+注册中心+服务提供者+服务消费者
+
+![05.springCloud](E:\工作文档\SpringBoot\images2\05.springCloud.jpg)
+
+
+
+##### 1、注册中心（eureka-server）
+
+1、新建Spring项目 ，SpringBoot1.5+Eureka Server 
+
+2、编写application.yml
+
+```yaml
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eureka-server #实例的主机名
+  client:
+    register-with-eureka: false #不把自己注册到euraka上
+    fetch-registry: false #不从euraka上来获取服务的注册信息
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+3、编写主程序
+
+```java
+@EnableEurekaServer
+@SpringBootApplication
+public class EurekaServerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApplication.class, args);
+    }
+}
+```
+
+
+
+##### 2、服务提供者（provider-ticket）
+
+1、新建Spring项目，SpringBoot1.5+Eureka Discovery
+
+2、编写配置文件application.yml
+
+```yaml
+server:
+  port: 8002
+spring:
+  application:
+    name: provider-ticket
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册是服务使用IP地址
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+3、创建一个售票的service
+
+```java
+@Service
+public class TicketService {
+
+    public String getTicket(){
+        System.out.println("8001");
+        return "《厉害了，我的国》";
+    }
+}
+```
+
+4、创建一个用于访问的controller
+
+```java
+@RestController
+public class TicketController {
+
+    @Autowired
+    TicketService ticketService;
+
+    @GetMapping("/ticket")
+    public String getTicket(){
+        return ticketService.getTicket();
+    }
+}
+```
+
+5、完毕
+
+
+
+##### 3、服务消费者（consumer-user）
+
+1、新建Spring项目，SpringBoot1.5+Eureka Discovery
+
+2、编写application.yml文件
+
+```yaml
+spring:
+  application:
+    name: consumer-user
+server:
+  port: 9001
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+3、编写一个controller
+
+```java
+@RestController
+public class UserController {
+
+    @Autowired
+    RestTemplate restTemplate;
+    @GetMapping("/buy")
+    public String buyTicket(String name){
+        String s = restTemplate.getForObject("http://PROVIDER-TICKET/ticket", String.class);
+        return name+"购买了"+"  "+s;
+    }
+}
+```
+
+4、编写主程序
+
+```java
+@EnableDiscoveryClient //开启发现服务功能
+@SpringBootApplication
+public class ConsumerUserApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerUserApplication.class, args);
+
+    }
+
+    @LoadBalanced //使用负载均衡机制
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+```
+
+5、完毕
+
+##### 4、测试
+
+1、运行Eureka-server，provider-ticket【8002执行】(端口改为8001打成jar包，执行)，consumer-user
+
+![06.EurekaServer](E:\工作文档\SpringBoot\images2\06.EurekaServer.jpg)
+
+2、provider-ticket
+
+
+
+![07.provider-ticket](E:\工作文档\SpringBoot\images2\07.provider-ticket.jpg)
+
+![07.provider-ticket](E:\工作文档\SpringBoot\images2\07.provider-ticket02.jpg)
+
+
+
+3、consumer-user
+
+![08.consumer](E:\工作文档\SpringBoot\images2\08.consumer.jpg)
+
+访问是以负载均衡的方式，所以每次都是 8001 。8002.轮询访问
 
 
 

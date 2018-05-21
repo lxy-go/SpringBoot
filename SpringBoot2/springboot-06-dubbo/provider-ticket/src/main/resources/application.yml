@@ -1,0 +1,10 @@
+dubbo:
+  application:
+    name: provider-ticket
+  registry:
+    address: zookeeper://192.168.179.131:2111
+  scan:
+    base-packages: com.wdjr.ticket.service
+server:
+  port: 9001
+
