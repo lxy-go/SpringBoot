@@ -15,5 +15,6 @@
      
      - ElasticSearch 全文检索
      - SpringCould 分布式管理
+     - RabbitMQ中间件
 
 ## 我是法律小白，我自己照着写的文档，如果侵权的话，请给我发邮箱告知一下lixiyan4633@163.com 
