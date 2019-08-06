@@ -33,7 +33,7 @@ Java Caching定义了5个核心接口
 
   存储在Cache的条目有一个定义的有效期，一旦超过这个时间，就会设置过期的状态，过期无法被访问，更新，删除。缓存的有效期可以通过ExpiryPolicy设置。
 
-  ![35.cache](E:\工作文档\SpringBoot\images2\35.cache.png)
+  ![35.cache](./images2/35.cache.png)
 
   
 
@@ -290,7 +290,7 @@ public class EmployeeController {
 
 8、测试结果
 
-![35.cache](E:\工作文档\SpringBoot\images2\35.cache.jpg)
+![35.cache](./images2/35.cache.jpg)
 
 继续访问，就不会执行方法，因为直接在缓存中取值
 
@@ -302,7 +302,7 @@ public class EmployeeController {
 
 2、导入缓存组件
 
-![36.importcache](E:\工作文档\SpringBoot\images2\36.importcache.jpg)
+![36.importcache](./images2/36.importcache.jpg)
 
 3、查看哪个缓存配置生效
 
@@ -517,11 +517,11 @@ spring.redis.host=192.168.179.131
 
 写入数据
 
-![37.redis](E:\工作文档\SpringBoot\images2\37.redis.jpg)
+![37.redis](./images2/37.redis.jpg)
 
 读取数据
 
-![38.redis02](E:\工作文档\SpringBoot\images2\38.redis02.jpg)
+![38.redis02](./images2/38.redis02.jpg)
 
 
 
@@ -547,7 +547,7 @@ public  void test02(){
 
 3、效果演示
 
-![38.redis03](E:\工作文档\SpringBoot\images2\38.redis03.jpg)
+![38.redis03](./images2/38.redis03.jpg)
 
 #### 4、以json方式传输对象
 
@@ -583,7 +583,7 @@ public  void test02(){
 
 3、测试效果
 
-![39.redis04](E:\工作文档\SpringBoot\images2\39.redis04.jpg)
+![39.redis04](./images2/39.redis04.jpg)
 
 
 
@@ -595,15 +595,15 @@ public  void test02(){
 
 同步机制
 
-![09.同步](E:\工作文档\SpringBoot\images2\09.同步.png)
+![09.同步](./images2/09.同步.png)
 
 并发机制
 
-![10.异步](E:\工作文档\SpringBoot\images2\10.异步.png)
+![10.异步](./images2/10.异步.png)
 
 消息队列机制
 
-![11.消息](E:\工作文档\SpringBoot\images2\11.消息.png)
+![11.消息](./images2/11.消息.png)
 
 
 
@@ -693,7 +693,7 @@ Channel:信道，多路复用连接中的一条独立的双向数据流通道，
 
 **Broker**:表示消息队列 服务实体
 
-![13.RabbitMQ结构](E:\工作文档\SpringBoot\images2\13.RabbitMQ结构.png)
+![13.RabbitMQ结构](./images2/13.RabbitMQ结构.png)
 
 
 
@@ -703,15 +703,15 @@ Exchange的三种方式
 
 direct：根据路由键直接匹配，一对一
 
-![14.RabbitMQDirect](E:\工作文档\SpringBoot\images2\14.RabbitMQDirect.png)
+![14.RabbitMQDirect](./images2/14.RabbitMQDirect.png)
 
 fanout:不经过路由键，直接发送到每一个队列
 
-![14.RabbitMQfaout](E:\工作文档\SpringBoot\images2\14.RabbitMQfaout.png)
+![14.RabbitMQfaout](./images2/14.RabbitMQfaout.png)
 
 topic:类似模糊匹配的根据路由键，来分配绑定的队列
 
-![14.RabbitMQtopic](E:\工作文档\SpringBoot\images2\14.RabbitMQtopic.png)
+![14.RabbitMQtopic](./images2/14.RabbitMQtopic.png)
 
 
 
@@ -736,7 +736,7 @@ docker ps
 
 2、打开网页客户端并登陆，账号【guest】,密码【guest】，登陆
 
-![13.rabbitmq](E:\工作文档\SpringBoot\images2\13.rabbitmq.jpg)
+![13.rabbitmq](./images2/13.rabbitmq.jpg)
 
 
 
@@ -744,25 +744,25 @@ docker ps
 
 1）、添加Exchange,分别添加**exchange.direct**、**exchange.fanout**、**exchange.topic**
 
-![15.exchanges](E:\工作文档\SpringBoot\images2\15.exchanges.jpg)
+![15.exchanges](./images2/15.exchanges.jpg)
 
 2）、添加 Queues,分别添加**lxy.news、wdjr、wdjr.emps、wdjr.news**
 
-![16.queues](E:\工作文档\SpringBoot\images2\16.queues.jpg)
+![16.queues](./images2/16.queues.jpg)
 
 3）、点击【exchange.direct】添加绑定规则
 
-![17.bind](E:\工作文档\SpringBoot\images2\17.bind.jpg)
+![17.bind](./images2/17.bind.jpg)
 
 
 
 4）、点击【exchange.fanout】添加绑定规则
 
-![18,bindfanout](E:\工作文档\SpringBoot\images2\18,bindfanout.jpg)
+![18,bindfanout](./images2/18,bindfanout.jpg)
 
 5）、点击【exchange.topic】添加绑定规则
 
-![19,bind_topic](E:\工作文档\SpringBoot\images2\19,bind_topic.jpg)
+![19,bind_topic](./images2/19,bind_topic.jpg)
 
 
 
@@ -774,41 +774,41 @@ docker ps
 
 【direct】发布命令，点击 Publish message
 
-![20.publish-direct](E:\工作文档\SpringBoot\images2\20.publish-direct.jpg)
+![20.publish-direct](./images2/20.publish-direct.jpg)
 
 查看队列的数量
 
-![21.queue-direct](E:\工作文档\SpringBoot\images2\21.queue-direct.jpg)
+![21.queue-direct](./images2/21.queue-direct.jpg)
 
 点击查看发送的信息
 
-![22.msg-direct](E:\工作文档\SpringBoot\images2\22.msg-direct.jpg)
+![22.msg-direct](./images2/22.msg-direct.jpg)
 
 【fanout】的发布消息
 
-![23.pub-fanout](E:\工作文档\SpringBoot\images2\23.pub-fanout.jpg)
+![23.pub-fanout](./images2/23.pub-fanout.jpg)
 
 队列信息
 
-![24.queue-fanout](E:\工作文档\SpringBoot\images2\24.queue-fanout.jpg)
+![24.queue-fanout](./images2/24.queue-fanout.jpg)
 
 
 
 随意一个数据信息例如：wdjr.emp
 
-![25.msg-fanout](E:\工作文档\SpringBoot\images2\25.msg-fanout.jpg)
+![25.msg-fanout](./images2/25.msg-fanout.jpg)
 
 【topic】发布信息测试
 
-![26.pub-topic](E:\工作文档\SpringBoot\images2\26.pub-topic.jpg)
+![26.pub-topic](./images2/26.pub-topic.jpg)
 
 队列的值
 
-![27.que-topic](E:\工作文档\SpringBoot\images2\27.que-topic.jpg)
+![27.que-topic](./images2/27.que-topic.jpg)
 
 信息查看
 
-![28.msg-topic](E:\工作文档\SpringBoot\images2\28.msg-topic.jpg)
+![28.msg-topic](./images2/28.msg-topic.jpg)
 
 #### 4、创建工程整合
 
@@ -858,7 +858,7 @@ spring:
 
 5、查看网页的信息
 
-![29.dir-idea](E:\工作文档\SpringBoot\images2\29.dir-idea.jpg)
+![29.dir-idea](./images2/29.dir-idea.jpg)
 
 6、取出队列的值
 
@@ -953,7 +953,7 @@ public void contextLoads() {
 
 4）、查看wdjr.news
 
-![30.dir-idea-json](E:\工作文档\SpringBoot\images2\30.dir-idea-json.jpg)
+![30.dir-idea-json](./images2/30.dir-idea-json.jpg)
 
 5）、取出数据
 
@@ -1022,7 +1022,7 @@ public void createExchange(){
 
 效果演示
 
-![31.createAMQP](E:\工作文档\SpringBoot\images2\31.createAMQP.jpg)
+![31.createAMQP](./images2/31.createAMQP.jpg)
 
 
 
@@ -1038,7 +1038,7 @@ public void createQueue(){
 
 
 
-![32.createQueue](E:\工作文档\SpringBoot\images2\32.createQueue.jpg)
+![32.createQueue](./images2/32.createQueue.jpg)
 
 3）、创建Bind规则
 
@@ -1049,7 +1049,7 @@ public void createBind(){
 }
 ```
 
-![33.createBinding](E:\工作文档\SpringBoot\images2\33.createBinding.jpg)
+![33.createBinding](./images2/33.createBinding.jpg)
 
 删除类似
 
@@ -1180,7 +1180,7 @@ PUT /megacorp/employee/1
 }
 ```
 
-![01.postman](E:\工作文档\SpringBoot\images2\01.postman.jpg)
+![01.postman](./images2/01.postman.jpg)
 
 ##### 2、检索文档
 
@@ -1192,7 +1192,7 @@ PUT /megacorp/employee/1
 GET /megacorp/employee/1
 ```
 
-![02.postmanget](E:\工作文档\SpringBoot\images2\02.postmanget.jpg)
+![02.postmanget](./images2/02.postmanget.jpg)
 
 ##### 3、轻量检索
 
@@ -1866,7 +1866,7 @@ dubbo就是个服务框架，如果没有分布式的需求，其实是不需要
 
 **3、docker的原理**
 
-![03.dubbo](E:\工作文档\SpringBoot\images2\03.dubbo.jpg)
+![03.dubbo](./images2/03.dubbo.jpg)
 
 
 
@@ -1976,7 +1976,7 @@ server:
 
 2）、新建一个service.userService,并将TicketService的接口调用过来【全类名相同-包相同】
 
-![03.dubbo2](E:\工作文档\SpringBoot\images2\03.dubbo2.jpg)
+![03.dubbo2](./images2/03.dubbo2.jpg)
 
 ```java
 package com.wdjr.user.service;
@@ -2024,7 +2024,7 @@ public void contextLoads() {
 
 结果展示：
 
-![04.dubbo+zk3](E:\工作文档\SpringBoot\images2\04.dubbo+zk3.jpg)
+![04.dubbo+zk3](./images2/04.dubbo+zk3.jpg)
 
 
 
@@ -2050,7 +2050,7 @@ SpringCloud是一个分布式的整体解决方案，Spring Cloud为开发者提
 
 注册中心+服务提供者+服务消费者
 
-![05.springCloud](E:\工作文档\SpringBoot\images2\05.springCloud.jpg)
+![05.springCloud](./images2/05.springCloud.jpg)
 
 
 
@@ -2205,21 +2205,21 @@ public class ConsumerUserApplication {
 
 1、运行Eureka-server，provider-ticket【8002执行】(端口改为8001打成jar包，执行)，consumer-user
 
-![06.EurekaServer](E:\工作文档\SpringBoot\images2\06.EurekaServer.jpg)
+![06.EurekaServer](./images2/06.EurekaServer.jpg)
 
 2、provider-ticket
 
 
 
-![07.provider-ticket](E:\工作文档\SpringBoot\images2\07.provider-ticket.jpg)
+![07.provider-ticket](./images2/07.provider-ticket.jpg)
 
-![07.provider-ticket](E:\工作文档\SpringBoot\images2\07.provider-ticket02.jpg)
+![07.provider-ticket](./images2/07.provider-ticket02.jpg)
 
 
 
 3、consumer-user
 
-![08.consumer](E:\工作文档\SpringBoot\images2\08.consumer.jpg)
+![08.consumer](./images2/08.consumer.jpg)
 
 访问是以负载均衡的方式，所以每次都是 8001 。8002.轮询访问
 
