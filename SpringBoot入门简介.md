@@ -294,7 +294,7 @@ AutoConfigurationImportSelector：导入组件选择器
 会给容器非常多的自动配置类，（xxxAutoConfiguration）;就是给容器中导入这个场景需要的所有组件，并配置
 好这些组件。 
 
-![1.configuration](E:\工作文档\SpringBoot\images\1.configuration.jpg)
+![1.configuration](./images/1.configuration.jpg)
 
 ```java
 protected List<String> getCandidateConfigurations(AnnotationMetadata metadata,
@@ -312,7 +312,7 @@ this.getBeanClassLoader());
 
 Spring Boot在启动的时候从类路径下的META-INF/spring.factorys中获取的EnableAutoConfiguration指定的值；
 
-将这些值作为自动配置类导入到容器中，自动配置就生效了。 ![2.factories](E:\工作文档\SpringBoot\images\2.factories.jpg)
+将这些值作为自动配置类导入到容器中，自动配置就生效了。 ![2.factories](./images/2.factories.jpg)
 
 J2EE的整体解决方案
 
@@ -711,7 +711,7 @@ SpringBoot推荐给容器添加组件的方式：
 
 2、全注解方式@Configuration+@Bean（new）
 
-![4.MyAppConfig](E:\工作文档\SpringBoot\images\4.MyAppConfig.jpg)
+![4.MyAppConfig](./images/4.MyAppConfig.jpg)
 
 
 
@@ -836,7 +836,7 @@ spring:
 
 --spring.profiles.active=dev
 
-![5.comandLine](E:\工作文档\SpringBoot\images\5.comandLine.jpg)
+![5.comandLine](./images/5.comandLine.jpg)
 
 优先级大于配置文件
 
@@ -869,7 +869,7 @@ SpringBoot启动扫描以下位置的application.properties或者application.yml
 
 
 
-![7.priority](E:\工作文档\SpringBoot\images\7.priority.jpg)
+![7.priority](./images/7.priority.jpg)
 
 还可以通过spring.config.location来改变配置文件的位置
 
@@ -897,7 +897,7 @@ SpringBoot启动扫描以下位置的application.properties或者application.yml
 
 5. RandomValuePropertySource配置的random.*属性值
 
-   ​
+   
 
    **优先加载profile,    由jar包外到jar包内**
 
@@ -909,7 +909,7 @@ SpringBoot启动扫描以下位置的application.properties或者application.yml
 
 9. **jar包内部的application.properties或application.yml(不带spring.profile)配置文件**
 
-   ​
+   
 
 10. @Configuration注解类的@PropertySource
 
@@ -1253,7 +1253,7 @@ public class HelloWorld {
 }
 ```
 
-![8.slf4j](E:\工作文档\SpringBoot\images\8.slf4j.jpg)
+![8.slf4j](./images/8.slf4j.jpg)
 
 每个日志框架的实现框架都有自己的配置文件。使用slf4j以后，**配置文件还是做成日志实现框架本身的配置文件**；
 
@@ -1275,7 +1275,7 @@ a系统(slf4j+logback)：Spring（commons-logging）、Hibernate（jboss-logging
 
 打开IDEA ，打开pom文件的依赖图形化显示
 
-![9.IDEAdependencies](E:\工作文档\SpringBoot\images\9.IDEAdependencies.jpg)
+![9.IDEAdependencies](./images/9.IDEAdependencies.jpg)
 
 SpringBoot的基础框架
 
@@ -1299,7 +1299,7 @@ SpringBoot的日志功能
 
 
 
-![10.slf4jandlogback](E:\工作文档\SpringBoot\images\10.slf4jandlogback.jpg)
+![10.slf4jandlogback](./images/10.slf4jandlogback.jpg)
 
 总结：
 
@@ -1407,7 +1407,7 @@ logback.xml直接被日志框架识别 ，logback-spring.xml日志框架就不�
 
 slf4j+log4j的方式；
 
-![11.log4j](E:\工作文档\SpringBoot\images\11.log4j.jpg)
+![11.log4j](./images/11.log4j.jpg)
 
 ```xml
 <dependency>
@@ -1512,7 +1512,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 http://www.webjars.org/
 
-![12.jquery](E:\工作文档\SpringBoot\images\12.jquery.jpg)
+![12.jquery](./images/12.jquery.jpg)
 
 localhost:8080/webjars/jquery/3.3.1/jquery.js
 
@@ -1534,11 +1534,11 @@ private String staticPathPattern = "/**";
 "/";当前项目的根路径
 ```
 
-![13.static](E:\工作文档\SpringBoot\images\13.static.jpg)
+![13.static](./images/13.static.jpg)
 
 localhost:8080/abc ==>去静态资源文件夹中找abc
 
-![14.static-css](E:\工作文档\SpringBoot\images\14.static-css.jpg)
+![14.static-css](./images/14.static-css.jpg)
 
 3、index页面欢迎页，静态资源文件夹下所有的index.html页面；被“/**”映射；
 
@@ -1682,11 +1682,11 @@ public class ThymeleafProperties {
 </div>
 ```
 
-![15.thtmeleaf-th01](E:\工作文档\SpringBoot\images\15.thtmeleaf-th01.jpg)
+![15.thtmeleaf-th01](./images/15.thtmeleaf-th01.jpg)
 
 **直接访问HTML页面**
 
-![15.thtmeleaf-th02](E:\工作文档\SpringBoot\images\15.thtmeleaf-th02.jpg)
+![15.thtmeleaf-th02](./images/15.thtmeleaf-th02.jpg)
 
 **2)、内联写法注意需要在body上加上 th:inline="text"敲黑板**
 
@@ -2056,7 +2056,7 @@ public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
 
 1、编写国际化配置文件，抽取页面需要的显示的国际化消息
 
-![16.national](E:\工作文档\SpringBoot\images\16.national.jpg)
+![16.national](./images/16.national.jpg)
 
 2、SpringBoot自动配置好了国际化配置的资源文件
 
@@ -2085,7 +2085,7 @@ public class MessageSourceAutoConfiguration {
 
 3、对IDEA的编码进行设置
 
-![17.encoding](E:\工作文档\SpringBoot\images\17.encoding.jpg)
+![17.encoding](./images/17.encoding.jpg)
 
 4、login进行标签插入
 
@@ -2155,7 +2155,7 @@ public LocaleResolver localeResolver() {
 
 默认的就是根据请求头带来的区域信息获取local国际化信息（截图就是这么犀利）
 
-![18.accept-language](E:\工作文档\SpringBoot\images\18.accept-language.jpg)
+![18.accept-language](./images/18.accept-language.jpg)
 
 #### 2、点击链接切换国际化
 
@@ -2549,7 +2549,7 @@ table class="table table-striped table-sm">
 
 #### 3、效果显示
 
-![19.table list](E:\工作文档\SpringBoot\images\19.table list.jpg)
+![19.table list](./images/19.table list.jpg)
 
 
 
@@ -2860,7 +2860,7 @@ form表单卸载外面，input 中 name="_method" value="delete" 模拟delete请
 
 默认错误页面
 
-![20.error](E:\工作文档\SpringBoot\images\20.error.jpg)
+![20.error](./images/20.error.jpg)
 
 原理参照
 
@@ -3004,7 +3004,7 @@ l浏览器发送请求 accpt:text/html
 
 举例子：新建4xx和5xx文件
 
-![21.error-static](E:\工作文档\SpringBoot\images\21.error-static.jpg)
+![21.error-static](./images/21.error-static.jpg)
 
 
 
@@ -3018,7 +3018,7 @@ l浏览器发送请求 accpt:text/html
 </body>
 ```
 
-![22.4xxhtml](E:\工作文档\SpringBoot\images\22.4xxhtml.jpg)
+![22.4xxhtml](./images/22.4xxhtml.jpg)
 
 ### 3、如何定制Json数据
 
@@ -3138,7 +3138,7 @@ map.put("ext", ext);
 
 SpringBoot默认使用Tomcat作为嵌入式的Servlet容器；
 
-![23.tomcat emd](E:\工作文档\SpringBoot\images\23.tomcat emd.jpg)
+![23.tomcat emd](./images/23.tomcat emd.jpg)
 
 问题？
 
@@ -3360,11 +3360,11 @@ public interface EmbeddedServletContainerFactory {
 
 继承关系
 
-![24.EmdServletFactory](E:\工作文档\SpringBoot\images\24.EmdServletFactory.jpg)
+![24.EmdServletFactory](./images/24.EmdServletFactory.jpg)
 
 2）、EmbeddedServletContainer:(嵌入式的Servlet容器)
 
-![25.EmdServletContainer](E:\工作文档\SpringBoot\images\25.EmdServletContainer.jpg)
+![25.EmdServletContainer](./images/25.EmdServletContainer.jpg)
 
 3）、TomcatEmbeddedServletContainerFactory为例 
 
@@ -3569,63 +3569,63 @@ ioc启动创建Servlet容器
 
 1、创建程序为war程序
 
-![26.tomcat1](E:\工作文档\SpringBoot\images\26.tomcat1.jpg)
+![26.tomcat1](./images/26.tomcat1.jpg)
 
 2、选择版本
 
-![27.tomcat2](E:\工作文档\SpringBoot\images\27.tomcat2.jpg)
+![27.tomcat2](./images/27.tomcat2.jpg)
 
 3、添加tomcat
 
-![28.tomcat3](E:\工作文档\SpringBoot\images\28.tomcat3.jpg)
+![28.tomcat3](./images/28.tomcat3.jpg)
 
 4、选择tomcat
 
-![30.tomcat4](E:\工作文档\SpringBoot\images\30.tomcat4.jpg)
+![30.tomcat4](./images/30.tomcat4.jpg)
 
 5、选择本地的Tomcat
 
-![31.tomcat5](E:\工作文档\SpringBoot\images\31.tomcat5.jpg)
+![31.tomcat5](./images/31.tomcat5.jpg)
 
 6、配置tomcat路径
 
-![32.tomcat6](E:\工作文档\SpringBoot\images\32.tomcat6.jpg)
+![32.tomcat6](./images/32.tomcat6.jpg)
 
 7、添加服务器
 
-![33.tomcat7](E:\工作文档\SpringBoot\images\33.tomcat7.jpg)
+![33.tomcat7](./images/33.tomcat7.jpg)
 
 8、添加exploded的war配置，应用OK tomcat配置完成
 
-![34.tomcat8](E:\工作文档\SpringBoot\images\34.tomcat8.jpg)
+![34.tomcat8](./images/34.tomcat8.jpg)
 
 二、配置webapp文件夹
 
 1、点击配置
 
-![35.tomcat9](E:\工作文档\SpringBoot\images\35.tomcat9.jpg)
+![35.tomcat9](./images/35.tomcat9.jpg)
 
 2、添加webapp目录
 
-![36.tomcat10](E:\工作文档\SpringBoot\images\36.tomcat10.jpg)
+![36.tomcat10](./images/36.tomcat10.jpg)
 
 3、默认配置就可以
 
-![37.tomcat11](E:\工作文档\SpringBoot\images\37.tomcat11.jpg)
+![37.tomcat11](./images/37.tomcat11.jpg)
 
 4、配置web.xml文件
 
-![38.tomcat12](E:\工作文档\SpringBoot\images\38.tomcat12.jpg)
+![38.tomcat12](./images/38.tomcat12.jpg)
 
 5、文档目录结构
 
-![39.tomcat13](E:\工作文档\SpringBoot\images\39.tomcat13.jpg)
+![39.tomcat13](./images/39.tomcat13.jpg)
 
 ### 2、运行一个示例
 
 1、项目目录
 
-![40.demo1](E:\工作文档\SpringBoot\images\40.demo1.jpg)
+![40.demo1](./images/40.demo1.jpg)
 
 2、配置文件写视图解析前后缀
 
@@ -3665,7 +3665,7 @@ message:${message}
 
 5、运行结果
 
-![41.demo2](E:\工作文档\SpringBoot\images\41.demo2.jpg)
+![41.demo2](./images/41.demo2.jpg)
 
 步骤
 
@@ -3723,7 +3723,7 @@ servlet3.0规范
 
 2、spring web模块里有这个文件
 
-![42.servletContainerInit](E:\工作文档\SpringBoot\images\42.servletContainerInit.jpg)
+![42.servletContainerInit](./images/42.servletContainerInit.jpg)
 
 ```java
 org.springframework.web.SpringServletContainerInitializer
@@ -3875,7 +3875,7 @@ docker的步骤：
 docker search mysql
 ```
 
-默认去docker hub网站查找![44.docker1](E:\工作文档\SpringBoot\images\44.docker1.jpg)
+默认去docker hub网站查找![44.docker1](./images/44.docker1.jpg)
 
 2、拉取
 
@@ -4097,7 +4097,7 @@ CREATE TABLE `department` (
 
 2、将department.sql命名为schema-all.sql
 
-![45.schema-all](E:\工作文档\SpringBoot\images\45.schema-all.jpg)
+![45.schema-all](./images/45.schema-all.jpg)
 
 3、运行测试类
 
@@ -4135,13 +4135,13 @@ public class HelloController {
 
 2、表中添加数据
 
-![46.department](E:\工作文档\SpringBoot\images\46.department.jpg)
+![46.department](./images/46.department.jpg)
 
 
 
 3、访问请求查询数据
 
-![47.hello](E:\工作文档\SpringBoot\images\47.hello.jpg)
+![47.hello](./images/47.hello.jpg)
 
 
 
@@ -4255,7 +4255,7 @@ public class DruidConfig {
 
 5、运行测试，访问 localhost:9000/druid
 
-![48.druid](E:\工作文档\SpringBoot\images\48.druid.jpg)
+![48.druid](./images/48.druid.jpg)
 
 输入刚才调好的用户名密码即可访问
 
@@ -4412,7 +4412,7 @@ mapper文件夹下有多个mapper文件，加麻烦，可以直接扫描整个ma
 
 1、新建文件
 
-![50.mybatisxml](E:\工作文档\SpringBoot\images\50.mybatisxml.jpg)
+![50.mybatisxml](./images/50.mybatisxml.jpg)
 
 2、新建mybatis的配置文件
 
@@ -4491,7 +4491,7 @@ public class EmployeeController {
 
 目录结构
 
-![51.JPA](E:\工作文档\SpringBoot\images\51.JPA.jpg)
+![51.JPA](./images/51.JPA.jpg)
 
 
 
@@ -4626,11 +4626,11 @@ private void initialize(Object[] sources) {
 
 ApplicationInitializer
 
-![52.applicationCotextInitializer](E:\工作文档\SpringBoot\images\52.applicationCotextInitializer.jpg)
+![52.applicationCotextInitializer](./images/52.applicationCotextInitializer.jpg)
 
  ApplicationListener
 
-![53.Listener](E:\工作文档\SpringBoot\images\53.Listener.jpg)
+![53.Listener](./images/53.Listener.jpg)
 
 ## 2、运行Run方法
 
@@ -4695,7 +4695,7 @@ public ConfigurableApplicationContext run(String... args) {
 
 文件目录
 
-![54.listener2](E:\工作文档\SpringBoot\images\54.listener2.jpg)
+![54.listener2](./images/54.listener2.jpg)
 
 
 
@@ -4831,45 +4831,45 @@ xxx-spring-boot-starter
 
 #### 1、新建一个空项目工程
 
-![56.starter01](E:\工作文档\SpringBoot\images\56.starter01.jpg)
+![56.starter01](./images/56.starter01.jpg)
 
 2、项目命名
 
-![57.starter02](E:\工作文档\SpringBoot\images\57.starter02.jpg)
+![57.starter02](./images/57.starter02.jpg)
 
 
 
 3、导入module
 
-![58.starter03](E:\工作文档\SpringBoot\images\58.starter03.jpg)
+![58.starter03](./images/58.starter03.jpg)
 
 4、新建一个Maven工程
 
-![59.starter04](E:\工作文档\SpringBoot\images\59.starter04.jpg)
+![59.starter04](./images/59.starter04.jpg)
 
 5、项目命名
 
-![60.starter05](E:\工作文档\SpringBoot\images\60.starter05.jpg)
+![60.starter05](./images/60.starter05.jpg)
 
 
 
-![61.starter06](E:\工作文档\SpringBoot\images\61.starter06.jpg)
+![61.starter06](./images/61.starter06.jpg)
 
 6、在新建一个autoconfiguration类的spring
 
-![62.starter07](E:\工作文档\SpringBoot\images\62.starter07.jpg)
+![62.starter07](./images/62.starter07.jpg)
 
 7、项目命名
 
-![63.starter08](E:\工作文档\SpringBoot\images\63.starter08.jpg)
+![63.starter08](./images/63.starter08.jpg)
 
 8、无需导入依赖
 
-![64.starter09](E:\工作文档\SpringBoot\images\64.starter09.jpg)
+![64.starter09](./images/64.starter09.jpg)
 
 9、next
 
-![65.starter10](E:\工作文档\SpringBoot\images\65.starter10.jpg)
+![65.starter10](./images/65.starter10.jpg)
 
 最后配置完成
 
@@ -4881,7 +4881,7 @@ xxx-spring-boot-starter
 
 目录
 
-![66.starter-build01](E:\工作文档\SpringBoot\images\66.starter-build01.jpg)
+![66.starter-build01](./images/66.starter-build01.jpg)
 
 2、pom文件修改
 
@@ -4900,7 +4900,7 @@ xxx-spring-boot-starter
 
 3、编写相关的类
 
-![67.starter-build02](E:\工作文档\SpringBoot\images\67.starter-build02.jpg)
+![67.starter-build02](./images/67.starter-build02.jpg)
 
 4、HelloProperties
 
@@ -5007,7 +5007,7 @@ com.lxy.starter.HelloServiceAutoConfiguration
 
 9、install生成
 
-![68.starter-build03](E:\工作文档\SpringBoot\images\68.starter-build03.jpg)
+![68.starter-build03](./images/68.starter-build03.jpg)
 
 #### 3、测试
 
@@ -5050,6 +5050,6 @@ lxy.hello.suffix=-Success
 
 4、运行访问http://localhost:8080/hello
 
-![70.starter-build05](E:\工作文档\SpringBoot\images\70.starter-build05.jpg)
+![70.starter-build05](./images/70.starter-build05.jpg)
 
 成功爽啊
